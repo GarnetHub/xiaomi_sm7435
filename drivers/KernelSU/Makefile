@@ -44,6 +44,16 @@ endif
 $(info -- KernelSU Manager signature size: $(KSU_EXPECTED_SIZE))
 $(info -- KernelSU Manager signature hash: $(KSU_EXPECTED_HASH))
 
+ifeq ($(CONFIG_KSU_MANUAL_HOOK),y)
+ifeq ($(CONFIG_KSU),m)
+$(error CONFIG_KSU_MANUAL_HOOK cannot be enabled when compiling KernelSU as LKM!)
+endif
+else
+ifeq ($(CONFIG_KPROBES),y)
+ccflags-y += -DKSU_HOOK_WITH_KPROBES
+endif
+endif
+
 ccflags-y += -DEXPECTED_SIZE=$(KSU_EXPECTED_SIZE)
 ccflags-y += -DEXPECTED_HASH=\"$(KSU_EXPECTED_HASH)\"
 
