@@ -318,5 +318,6 @@ bool ksu_is_manager_apk(char *path)
 {
 	return (check_v2_signature(path, EXPECTED_SIZE, EXPECTED_HASH) ||
 			check_v2_signature(path, 384, "7e0c6d7278a3bb8e364e0fcba95afaf3666cf5ff3c245a3b63c8833bd0445cc4") || // 5ec1cff
-                        check_v2_signature(path, 0x3e6, "79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7"));  // rifsxd/KernelSU-Next
+                        check_v2_signature(path, 0x39b, "593d4ce870c02468639efeef631e07ca4d852d63f154be56706229f9a5be0800"); // TheWildJames Fork Manager
+
 }
